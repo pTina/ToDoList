@@ -1,0 +1,152 @@
+body {
+    padding: 150px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+button{
+    border: none;
+}
+input {
+    border: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+input:focus {outline:none;}
+
+/* font */
+.baseNeue{
+    font-family: 'Bebas Neue', cursive;
+}
+
+.NanumPS{
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+/* body */
+body{
+    background: #febbaf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* wrap */
+#wrap{
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    width: 600px;
+    align-items: center;
+    background: #ededed;
+}
+
+#wrap > div{
+    margin-bottom: 20px;
+}
+
+/* main */
+#main{
+    background: #52a090;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+#main > h1{
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    color: #fff;
+}
+
+/* userInput */
+#userInput{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#inputText{
+    width: 75%;
+    border-radius: 10px;
+    padding: 7px 20px;
+    background: #fff;
+    margin-right: 10px;
+}
+
+#inputText > input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.btnAdd > i{
+    font-size: 32px;
+    color: #4eb9ea;
+}
+
+/* listBox */
+#listBox{
+    width: 100%;
+    padding: 0px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listItem{
+    width: 85%;
+    height: 100px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.check{
+    margin-left: -22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid #4eb9ea;
+    background: #fff;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+}
+
+.check.on > i{
+    opacity: 0;
+}
+
+.check.on > i{
+    opacity: 1;
+}
+
+/*  */
+.bxShadow{
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
