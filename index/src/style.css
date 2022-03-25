@@ -146,7 +146,34 @@ body{
     opacity: 1;
 }
 
+.listItem .content{
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.listItem .content .todo{
+    margin-right: 13px;
+    font-size: 20px;
+    color: #4d6287;
+}
+
+.listItem .content .mark .fa-star{
+    font-size: 21px;
+    margin-top: 1px;
+    color: #c0c0c0;
+}
+
+.listItem .content .mark.on .fa-star{
+    color: #f9bf73;
+}
+
+
 /*  */
 .bxShadow{
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.pointer{
+    cursor: pointer;
 }
