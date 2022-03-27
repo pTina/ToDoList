@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://kit.fontawesome.com/c527d8640b.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c527d8640b.js" crossorigin="anonymous"></script>
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -20,29 +20,26 @@
         <div id="main">
             <h1 class="baseNeue">To Do List</h1>
         </div>
-        <div id="userInput">
-            <div id="inputText">
-                <input type="text" class="NanumPS"/>
+        <div class="userInput">
+            <div class="textBox">
+                <input type="text" class="inputText NanumPS" />
             </div>
             <button type="button" class="btnAdd pointer"><i class="fa-solid fa-circle-plus"></i></button>
         </div>
-        <div id="listBox">
-            <div class="listItem bxShadow">
-                <div class="check pointer">
-                    <i class="fa-solid fa-check"></i>
-                </div>
-                <div class="content">
-                    <div class="todo NanumPS">할 일을 적어보세요.</div>
-                    <div class="mark pointer">
-                        <i class="fa-regular fa-star"></i>
-                        <!-- <i class="fa-solid fa-star"></i> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="listBox"></div>
     </div>
+
+    <script src="../common/js/jquery-3.4.1.min.js"></script>
+    <script src="src/index.js"></script>
+
+    <script>
+        $(function(){
+            const todolist = new ToDoList($('#wrap'));
+            todolist.init();
+            
+        });
+    </script>
 </body>
-<script src="../common/js/jquery-3.4.1.min.js"></script>
-<script src="src/index.js"></script>
+
 
 </html>
