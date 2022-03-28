@@ -40,6 +40,11 @@ input:focus {outline:none;}
     font-family: 'Nanum Pen Script', cursive;
 }
 
+.NanumGothic{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+
 /* body */
 body{
     background: #febbaf;
@@ -64,20 +69,66 @@ body{
     width: 100%;
     height: 50px;
     margin-bottom: 20px;
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #main > h1{
     text-align: center;
-    line-height: 50px;
     font-size: 20px;
     color: #fff;
+    width: 80%;
+}
+
+#btnMenu{
+    width: 10%;
+    color: white;
+    text-align: center;
+}
+
+#menu.on{
+    display: flex;
+}
+
+#menu{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    background: #52a090;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+#menu .menuItem{
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    font-family: 'Nanum Gothic', sans-serif;
+    cursor: pointer;
+}
+
+#home{
+    width: 10%;
+    text-align: center;
+    color: white;
 }
 
 /* userInput */
+[view="page-home"] .userInput{
+    display: flex;
+}
+
 .userInput{
     width: 100%;
     height: 50px;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 20px;
@@ -136,8 +187,12 @@ body{
     color: #fff;
 }
 
-.check.on > i{
+.check > i{
     opacity: 0;
+}
+
+.check.on{
+    background: #4eb9ea;
 }
 
 .check.on > i{
