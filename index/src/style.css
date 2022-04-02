@@ -206,6 +206,8 @@ body{
     display: flex;
     margin-left: 20px;
     align-items: center;
+    max-width: 85%;
+    word-break: break-word;
 }
 
 .listItem .content .todo{

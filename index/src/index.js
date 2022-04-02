@@ -207,6 +207,16 @@ const ToDoList = function (wrap) {
         
     }
 
+    this.overHeight = function(el){
+        const HEIGHT = Number(el.css('height').split('px')[0]);
+        console.log(HEIGHT);
+        if(HEIGHT > 100){
+            console.log('eee');
+            console.log(el.parents('.listItem'));
+            el.parents('.listItem').css(`height`,`${HEIGHT+40}px`);
+        }
+    }
+
     this.elItem = function(id){
         return self.listBox.find(`#${id}`);
     }
@@ -221,6 +231,8 @@ const ToDoList = function (wrap) {
 
         self.listBox.append(item.html);
         item.initItem(self.elItem(item._id));
+
+        self.overHeight(item.wrap.find('.content'));
     }
 
 
