@@ -12,11 +12,14 @@ const ToDoList = function (wrap) {
     const self = this;
     this.wrap = wrap;
     this.listBox = wrap.find('#listBox');
-    this.btnAdd = wrap.find('.btnAdd');
     this.btnMenu = wrap.find('#btnMenu');
     this.menu = wrap.find('#menu');
     this.listItem = [];
     this.home = wrap.find('#home');
+
+    this.userInput = wrap.find('.userInput');
+    this.inputText = self.userInput.find('.inputText');
+    this.btnAdd = self.userInput.find('.btnAdd');
 
     class Item {
         constructor(input, id){
@@ -37,6 +40,9 @@ const ToDoList = function (wrap) {
                             <i class="fa-regular fa-star"></i>
                         </div>
                     </div>
+                    <button type="button" class="btnClose pointer">
+                        <i class="fa-regular fa-x"></i>
+                    </button>
                 </div>
             `;
         }
@@ -79,9 +85,11 @@ const ToDoList = function (wrap) {
             };
 
             if(!re) self.listItem.push(this);
+            // console.log(self.listItem);
             
             const $check = _self.wrap.find('.check');
             const $mark = _self.wrap.find('.mark');
+            const $btnClose = _self.wrap.find('.btnClose');
 
             $check.on('click', function(){
                 $(this).toggleClass('on');
@@ -106,10 +114,18 @@ const ToDoList = function (wrap) {
                 }
             })
 
-            this.wrap.find('.check, .mark').on('click', function(){
+            $btnClose.on('click', function(){
+                const idx = self.listItem.findIndex(i => i.id === _self.id);
+                self.listItem.splice(idx,1);
+                _self.wrap.remove();
+                // console.log(self.listItem);
+            })
+
+            _self.wrap.find('.check, .mark').on('click', function(){
                 // console.log(`id: ${_self.id}, 완료: ${_self.check}, 즐찾: ${_self.mark}`);
                 _self.html = _self.wrap[0].outerHTML;
             })
+
         }
     };
 
@@ -126,12 +142,11 @@ const ToDoList = function (wrap) {
 
     this.init = function () {
         self.btnAdd.on('click', function(){
-            const $userInput = $(this).parent('.userInput');
-            const $inputText = $userInput.find('.inputText');
+            self.updateItem();
+        })
 
-            if(self.isEmpty($inputText)) return false;
-
-            self.updateItem($inputText);
+        self.inputText.on('keyup', function(e){
+            if(e.keyCode === 13) self.updateItem();
         })
 
         self.btnMenu.on('click', function(){
@@ -196,7 +211,10 @@ const ToDoList = function (wrap) {
         return self.listBox.find(`#${id}`);
     }
 
-    this.updateItem = function(el){
+    this.updateItem = function(){
+        const el = self.inputText;
+        if(self.isEmpty(el)) return false;
+
         self.count++;
         const item = new Item(el.val(), `list-${self.count}`);
         el.val('');
