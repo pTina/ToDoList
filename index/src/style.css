@@ -1,5 +1,6 @@
 body {
-    padding: 150px;
+    padding: 45px;
+    overflow: hidden;
 }
 
 * {
@@ -62,6 +63,8 @@ body{
     width: 600px;
     align-items: center;
     background: #ededed;
+
+    height: 810px;
 }
 
 /* main */
@@ -159,11 +162,15 @@ body{
 
 /* listBox */
 #listBox{
-    width: 100%;
+    width: 94%;
     padding: 0px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    height: 650px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
 }
 
 .listItem{
@@ -176,6 +183,8 @@ body{
     flex-direction: row;
     margin-bottom: 20px;
     position: relative;
+
+    min-height: 100px;
 }
 
 .check{

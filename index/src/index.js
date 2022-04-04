@@ -24,8 +24,8 @@ const ToDoList = function (wrap) {
     class Item {
         constructor(input, id){
             this.inputVal = input;
-            this._check = 'false';
-            this._mark = 'false';
+            this._check = false;
+            this._mark = false;
             this._id = id;
             this.wrap = null;
 
@@ -94,9 +94,9 @@ const ToDoList = function (wrap) {
             $check.on('click', function(){
                 $(this).toggleClass('on');
                 if($(this).hasClass('on')){
-                    _self.check = 'true';
+                    _self.check = true;
                 }else{
-                    _self.check = 'false';
+                    _self.check = false;
                 }
             })
 
@@ -106,11 +106,11 @@ const ToDoList = function (wrap) {
 
                 if($(this).hasClass('on')){
                     $icon.removeClass('fa-regular').addClass('fa-solid');
-                    _self.mark = 'true';
+                    _self.mark = true;
 
                 }else{
                     $icon.removeClass('fa-solid').addClass('fa-regular');
-                    _self.mark = 'false';
+                    _self.mark = false;
                 }
             })
 
@@ -173,13 +173,13 @@ const ToDoList = function (wrap) {
         self.listBox[0].innerHTML = '';
 
         if(id === 'bookMark'){
-            self.loopItem('mark', 'true');
+            self.loopItem('mark', true);
 
         }else if(id === 'comItem'){
-            self.loopItem('check', 'true');
+            self.loopItem('check', true);
 
         }else if(id === 'inComitem'){
-            self.loopItem('check', 'false');
+            self.loopItem('check', false);
             
         }else if(id === 'home'){
             self.loopItem();
@@ -190,7 +190,7 @@ const ToDoList = function (wrap) {
         const _key = key;
         const _value = value;
 
-        if(key === undefined || value === undefined){
+        if(_key === undefined || _value === undefined){
             $.each(self.listItem, (index, item) =>{
                 self.listBox.append(item.html);
                 item.initItem(self.elItem(item.id), 're');
@@ -199,7 +199,7 @@ const ToDoList = function (wrap) {
         }
 
         $.each(self.listItem, (index, item) =>{
-            if(item[_key] === value){
+            if(item[_key].toString() === _value.toString()){
                 self.listBox.append(item.html);
                 item.initItem(self.elItem(item.id), 're');
             }
@@ -209,10 +209,7 @@ const ToDoList = function (wrap) {
 
     this.overHeight = function(el){
         const HEIGHT = Number(el.css('height').split('px')[0]);
-        console.log(HEIGHT);
         if(HEIGHT > 100){
-            console.log('eee');
-            console.log(el.parents('.listItem'));
             el.parents('.listItem').css(`height`,`${HEIGHT+40}px`);
         }
     }
