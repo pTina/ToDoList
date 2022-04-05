@@ -199,7 +199,7 @@ const ToDoList = function (wrap) {
         }
 
         $.each(self.listItem, (index, item) =>{
-            if(item[_key].toString() === _value.toString()){
+            if(item[_key] === _value){
                 self.listBox.append(item.html);
                 item.initItem(self.elItem(item.id), 're');
             }
@@ -210,7 +210,11 @@ const ToDoList = function (wrap) {
     this.overHeight = function(el){
         const HEIGHT = Number(el.css('height').split('px')[0]);
         if(HEIGHT > 100){
-            el.parents('.listItem').css(`height`,`${HEIGHT+40}px`);
+            el.parents('.listItem').css({
+                'height':`${HEIGHT+40}px`,
+                'min-height': 'auto'
+            });
+            
         }
     }
 

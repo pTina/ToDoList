@@ -162,16 +162,20 @@ body{
 
 /* listBox */
 #listBox{
-    width: 94%;
+    width: 100%;
+    height: 650px;
     padding: 0px 16px;
-    display: flex;
     flex-direction: column;
     align-items: center;
-
-    height: 650px;
-    overflow-y: scroll;
+    display: flex;
+   
+    overflow: auto;
+    overflow-x: hidden;
     margin-bottom: 20px;
 }
+
+#listBox{ -ms-overflow-style: none; }
+#listBox::-webkit-scrollbar{ display:none; }
 
 .listItem{
     width: 85%;
