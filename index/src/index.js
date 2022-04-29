@@ -7,7 +7,6 @@
 // getter, setter
 // https://ko.javascript.info/property-accessors#ref-2680
 
-
 const ToDoList = function (wrap) {
     const self = this;
     this.wrap = wrap;
@@ -20,114 +19,6 @@ const ToDoList = function (wrap) {
     this.userInput = wrap.find('.userInput');
     this.inputText = self.userInput.find('.inputText');
     this.btnAdd = self.userInput.find('.btnAdd');
-
-    class Item {
-        constructor(input, id){
-            this.inputVal = input;
-            this._check = false;
-            this._mark = false;
-            this._id = id;
-            this.wrap = null;
-
-            this._html = `
-                <div class="listItem bxShadow" id="${this._id}">
-                    <div class="check pointer">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <div class="content">
-                        <div class="todo NanumPS">${this.inputVal}</div>
-                        <div class="mark pointer">
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                    <button type="button" class="btnClose pointer">
-                        <i class="fa-regular fa-x"></i>
-                    </button>
-                </div>
-            `;
-        }
-
-        get id(){
-            return this._id;
-        }
-
-        get html(){
-            return  this._html;
-        }
-
-        set html(value){
-            return this._html = value;
-        }
-
-        get check(){
-            return this._check;
-        }
-
-        set check(value){
-            this._check = value;
-        }
-
-        get mark(){
-            return this._mark;
-        }
-
-        set mark(value){
-            this._mark = value;
-        }
-
-        initItem(wrap, re){
-            const _self = this;
-            _self.wrap = wrap;
-
-            if(this.wrap === undefined){
-                console.log(`this.wrap: ${_self.wrap}}이 없어요.`);
-                return false;
-            };
-
-            if(!re) self.listItem.push(this);
-            // console.log(self.listItem);
-            
-            const $check = _self.wrap.find('.check');
-            const $mark = _self.wrap.find('.mark');
-            const $btnClose = _self.wrap.find('.btnClose');
-
-            $check.on('click', function(){
-                $(this).toggleClass('on');
-                if($(this).hasClass('on')){
-                    _self.check = true;
-                }else{
-                    _self.check = false;
-                }
-            })
-
-            $mark.on('click', function(){
-                $(this).toggleClass('on');
-                const $icon = $(this).find('i');
-
-                if($(this).hasClass('on')){
-                    $icon.removeClass('fa-regular').addClass('fa-solid');
-                    _self.mark = true;
-
-                }else{
-                    $icon.removeClass('fa-solid').addClass('fa-regular');
-                    _self.mark = false;
-                }
-            })
-
-            $btnClose.on('click', function(){
-                const idx = self.listItem.findIndex(i => i.id === _self.id);
-                self.listItem.splice(idx,1);
-                _self.wrap.remove();
-                // console.log(self.listItem);
-            })
-
-            _self.wrap.find('.check, .mark').on('click', function(){
-                // console.log(`id: ${_self.id}, 완료: ${_self.check}, 즐찾: ${_self.mark}`);
-                _self.html = _self.wrap[0].outerHTML;
-            })
-
-        }
-    };
 
     this.count = 0;
     this.data = {
@@ -165,6 +56,7 @@ const ToDoList = function (wrap) {
             self.render(id);
         });
 
+
     }
 
     this.render = function(id){
@@ -194,6 +86,7 @@ const ToDoList = function (wrap) {
             $.each(self.listItem, (index, item) =>{
                 self.listBox.append(item.html);
                 item.initItem(self.elItem(item.id), 're');
+                self.overHeight(item.wrap.find('.todo'));
             })
             return false;
         }
@@ -202,6 +95,7 @@ const ToDoList = function (wrap) {
             if(item[_key] === _value){
                 self.listBox.append(item.html);
                 item.initItem(self.elItem(item.id), 're');
+                self.overHeight(item.wrap.find('.todo'));
             }
         })
         
@@ -212,9 +106,8 @@ const ToDoList = function (wrap) {
         if(HEIGHT > 100){
             el.parents('.listItem').css({
                 'height':`${HEIGHT+40}px`,
-                'min-height': 'auto'
+                'min-height': `${HEIGHT+40}px`
             });
-            
         }
     }
 
@@ -236,7 +129,6 @@ const ToDoList = function (wrap) {
         self.overHeight(item.wrap.find('.content'));
     }
 
-
     this.isEmpty = function(el){
         const str = el.val().trim();
 
@@ -248,3 +140,7 @@ const ToDoList = function (wrap) {
     }
 
 }
+
+
+// 옵저버 https://baeharam.netlify.app/posts/javascript/intersection-observer
+// 파이어베이스 연동 https://spiralmoon.tistory.com/entry/Firebase-%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%97%90-%EC%9B%B9-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0

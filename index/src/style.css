@@ -136,7 +136,7 @@ body{
     display: none;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .textBox{
@@ -263,7 +263,17 @@ body{
     opacity: 1;
 }
 
+.listItem.moving{
+    transform: scale(1.05);
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
 
+.listItem{
+    cursor: pointer;
+    /* user-select: none; */
+}
 
 /*  */
 .bxShadow{

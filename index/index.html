@@ -11,9 +11,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link href="src/style.css" rel="stylesheet">
     <title>Document</title>
+
+    <style>
+        .position{
+            position: absolute;
+            top: 70px;
+            left: 20px;
+        }
+        .position > span{
+            display: block;
+        }
+
+        .position > span::after{
+            content: attr(data);
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,14 +58,25 @@
         </div>
         <div id="listBox"></div>
     </div>
+    
+    <div class="position">
+        <span class="pst pstX" data="0">x: </span>
+        <span class="pst pstY" data="0">y: </span>
+
+        <span class="pst pstItem" data="0">item: </span>
+        <span class="pst pstState" data=""></span>
+    </div>
 
     <script src="../common/js/jquery-3.4.1.min.js"></script>
+    <script src="src/item.js"></script>
+    <script src="src/drag.js"></script>
     <script src="src/index.js"></script>
 
     <script>
         $(function(){
             const todolist = new ToDoList($('#wrap'));
             todolist.init();
+
             
         });
     </script>
