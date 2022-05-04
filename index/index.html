@@ -11,24 +11,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="src/style.css" rel="stylesheet">
+    <link href="src/css/style.css" rel="stylesheet">
     <title>Document</title>
 
     <style>
-        .position{
+        .position {
             position: absolute;
             top: 70px;
             left: 20px;
         }
-        .position > span{
+
+        .position>span {
             display: block;
         }
 
-        .position > span::after{
+        .position>span::after {
             content: attr(data);
             display: inline-block;
         }
     </style>
+
 </head>
 
 <body>
@@ -58,7 +60,7 @@
         </div>
         <div id="listBox"></div>
     </div>
-    
+
     <div class="position">
         <span class="pst pstX" data="0">x: </span>
         <span class="pst pstY" data="0">y: </span>
@@ -67,20 +69,32 @@
         <span class="pst pstState" data=""></span>
     </div>
 
-    <script src="../common/js/jquery-3.4.1.min.js"></script>
-    <script src="src/item.js"></script>
-    <script src="src/drag.js"></script>
-    <script src="src/index.js"></script>
+    
+    <!-- 
+        https://meaownworld.tistory.com/89
+        브라우저는 이전에 사용한 CSS를 브라우저가 캐쉬에 보관해놓고 사용하기에 링크된 CSS 변화점을 기억하지 못함
+        그래서 뒤에 ?문자열 붙여서
+        새로운 파일이라고 알림
+    -->
+    
+    <!-- <script type="module" src="../common/js/jquery-3.4.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script type="module" src="./src/js/firebase.js"></script> -->
 
-    <script>
-        $(function(){
-            const todolist = new ToDoList($('#wrap'));
-            todolist.init();
+    <script type="module" src="./src/js/index.js"></script>
 
-            
-        });
-    </script>
+    <!-- <script type="module" src="./src/item.js"></script> -->
+    <!-- <script type="module" src="./src/js/todolist.js?xx"></script> -->
+    
+
+    <!-- <script type="module" src="./src/item.js"></script> -->
+    <!-- <script type="module" src="./src/js/drag.js"></script> -->
+    
+    <!-- <script type="module">
+    </script> -->
+
 </body>
+
 
 
 </html>
